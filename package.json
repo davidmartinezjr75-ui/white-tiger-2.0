@@ -1,0 +1,23 @@
+{
+  "name": "white-tiger-2",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/hotwired__turbo": "^8.0.6",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@fontsource/lato": "^5.2.5",
+    "@fontsource/montserrat": "^5.2.5",
+    "@hotwired/turbo": "^8.0.23",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0"
+  }
+}
