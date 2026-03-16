@@ -2,13 +2,7 @@
   "outputDirectory": "dist",
   "buildCommand": "npm run build",
   "cleanUrls": true,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/404.html",
-      "status": 404
-    }
-  ],
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*\\.html)",
@@ -29,7 +23,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|webp))",
+      "source": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|webp|json))",
       "headers": [
         {
           "key": "Cache-Control",

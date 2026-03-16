@@ -1,0 +1,23 @@
+{
+  "name": "White Tiger Marketing",
+  "short_name": "White Tiger",
+  "description": "Strategic social media, sales funnels, and paid advertising for service businesses.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0D0D0D",
+  "theme_color": "#007BFF",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
