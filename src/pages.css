@@ -358,11 +358,17 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: clamp(20px, 4vw, 40px);
-  /* Scales with viewport instead of fixed 450px */
   min-height: clamp(280px, 50vw, 500px);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.contact-embed-cal {
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  border: none;
 }
 
 .contact-embed-placeholder {
@@ -646,6 +652,10 @@
   .contact-embed {
     width: 100%;
     min-height: clamp(240px, 60vw, 380px);
+  }
+
+  .contact-embed-cal iframe {
+    height: 700px;
   }
 }
 
