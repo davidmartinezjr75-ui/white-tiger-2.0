@@ -1,4 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0D0D0D"/>
-  <text x="16" y="23" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="800" fill="#007BFF" text-anchor="middle" letter-spacing="-0.5">WT</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
+  <image xlink:href="/logo-tiger.png" width="32" height="32"/>
 </svg>
