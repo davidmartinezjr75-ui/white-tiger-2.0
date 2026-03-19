@@ -16,6 +16,14 @@ function skipAnimations(): void {
   document.querySelectorAll(
     '.fade-in, .anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale-in, .timeline-item'
   ).forEach((el) => el.classList.add('visible'));
+  // Also reveal word-by-word headline immediately
+  const heroWords = document.querySelector<HTMLElement>('.hero-words');
+  if (heroWords) {
+    heroWords.querySelectorAll<HTMLElement>('.word').forEach((w) => {
+      w.style.transitionDelay = '0s';
+    });
+    heroWords.classList.add('revealed');
+  }
 }
 
 // ── Preloader ──
@@ -144,6 +152,37 @@ function animateCounter(el: Element): void {
   requestAnimationFrame(update);
 }
 
+// ── Hero Word Reveal ──
+function initWordReveal(): void {
+  const el = document.querySelector<HTMLElement>('.hero-words');
+  if (!el) return;
+  const words = el.querySelectorAll<HTMLElement>('.word');
+  words.forEach((word, i) => {
+    word.style.transitionDelay = `${0.2 + i * 0.075}s`;
+  });
+  // Double rAF ensures the initial opacity:0 state is painted before transition fires
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      el.classList.add('revealed');
+    });
+  });
+}
+
+// ── Cursor Spotlight ──
+function initCursorSpotlight(signal: AbortSignal): void {
+  document.querySelectorAll<HTMLElement>('[data-spotlight]').forEach((section) => {
+    section.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = section.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      section.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(0,123,255,0.07), transparent 55%)`;
+    }, { signal });
+    section.addEventListener('mouseleave', () => {
+      section.style.background = '';
+    }, { signal });
+  });
+}
+
 // ── Mobile Nav ──
 function initMobileNav(signal: AbortSignal): void {
   const btn = document.querySelector<HTMLButtonElement>('.nav-hamburger');
@@ -238,9 +277,11 @@ function initializeInteractions(): void {
     initHeroParallax(signal);
     initCardTilt(signal);
     initMagneticButtons(signal);
+    initCursorSpotlight(signal);
   }
 
   initPreloader();
+  initWordReveal();
   initTimelineAnimation();
   initStaggeredGrids();
   initMobileNav(signal);

@@ -15,6 +15,7 @@
     "vite": "^7.3.1"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.2.11",
     "@fontsource/lato": "^5.2.5",
     "@fontsource/montserrat": "^5.2.5",
     "@hotwired/turbo": "^8.0.23",
