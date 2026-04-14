@@ -132,26 +132,6 @@ function initStaggeredGrids(): void {
   });
 }
 
-// ── Counter Animation ──
-function animateCounter(el: Element): void {
-  if (el.classList.contains('animated')) return;
-  el.classList.add('animated');
-  const target = parseInt(el.getAttribute('data-count') || '0', 10);
-  const suffix = el.getAttribute('data-suffix') || '';
-  const prefix = el.getAttribute('data-prefix') || '';
-  const duration = 2000;
-  const startTime = performance.now();
-  function update(currentTime: number) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.floor(eased * target);
-    el.textContent = prefix + current.toLocaleString() + suffix;
-    if (progress < 1) requestAnimationFrame(update);
-  }
-  requestAnimationFrame(update);
-}
-
 // ── Hero Word Reveal ──
 function initWordReveal(): void {
   const el = document.querySelector<HTMLElement>('.hero-words');
@@ -252,22 +232,6 @@ function initializeInteractions(): void {
       if (el.closest('[data-stagger]')) return;
       observer.observe(el);
     });
-
-  const resultsSection = document.querySelector('#results');
-  if (resultsSection) {
-    const counterObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.querySelectorAll('[data-count]').forEach(animateCounter);
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    counterObserver.observe(resultsSection);
-  }
 
   const heroSection = document.querySelector('.hero');
   if (heroSection) heroSection.classList.add('hero-animate');
