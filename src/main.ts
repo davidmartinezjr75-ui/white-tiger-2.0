@@ -88,24 +88,25 @@ function initCardTilt(signal: AbortSignal): void {
 
 // ── Timeline Sequential Reveal ──
 function initTimelineAnimation(): void {
-  const items = document.querySelectorAll<HTMLElement>('.timeline-item');
-  if (!items.length) return;
-  const allItems = Array.from(items);
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const idx = allItems.indexOf(entry.target as HTMLElement);
-          setTimeout(() => {
-            (entry.target as HTMLElement).classList.add('visible');
-          }, idx * 120);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -20px 0px' }
-  );
-  items.forEach((item) => observer.observe(item));
+  document.querySelectorAll<HTMLElement>('.timeline').forEach((timeline) => {
+    const items = Array.from(timeline.querySelectorAll<HTMLElement>('.timeline-item'));
+    if (!items.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = items.indexOf(entry.target as HTMLElement);
+            setTimeout(() => {
+              (entry.target as HTMLElement).classList.add('visible');
+            }, idx * 120);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -20px 0px' }
+    );
+    items.forEach((item) => observer.observe(item));
+  });
 }
 
 // ── Staggered Grid Animation ──
