@@ -156,7 +156,7 @@ function initCursorSpotlight(signal: AbortSignal): void {
       const rect = section.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      section.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(0,123,255,0.07), transparent 55%)`;
+      section.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(26,86,219,0.07), transparent 55%)`;
     }, { signal });
     section.addEventListener('mouseleave', () => {
       section.style.background = '';

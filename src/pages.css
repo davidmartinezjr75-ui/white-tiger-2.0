@@ -13,10 +13,10 @@
 }
 
 .hero-container {
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 24px;
 }
 
@@ -34,7 +34,7 @@
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 16px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* ── Section Headers ── */
@@ -203,7 +203,7 @@
 .contact-rule {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 123, 255, 0.4), transparent);
+  background: linear-gradient(90deg, oklch(53% 0.21 258 / 0.4), transparent);
 }
 
 /* ── Founder Section ── */
@@ -315,7 +315,7 @@
   height: 10px;
   border-radius: 50%;
   background: var(--blue);
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 0 0 4px oklch(53% 0.21 258 / 0.2);
 }
 
 .timeline-item:last-child {
